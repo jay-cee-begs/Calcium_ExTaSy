@@ -1,0 +1,40 @@
+pipeline_sandbox.txt
+
+Hatem_suite2p_ROI_viz.ipynb == main program to visualize suite2p ROIs post-processing
+
+
+working on creating the first_pass peak detection function 
+
+
+now able to remove the peak regions (above 25% + some # of frames on either side) and measure the std deviation of the remaining trace
+	3x std dev appears to work pretty well; will need to double-check which ROIs are included / excluded from the final calculations.
+
+It could even be good to try and keep doing iterative pass-attempts to keep removing peaks to get a more accurate picture of the baseline
+	If I keep filtering the traces, eventually I will be left with only the noise
+
+I think that three times of zero-ing 30% of the noise might lead to the correction I am looking for, I will make an attempt to do this
+
+	ALTERNATIVELY: instead of zeroing the peak regions, instead we might just remove the peak regions. I think that the areas of extended zeros also dramatically impact the np.std() measurement
+
+
+CSU imaging is much easier for analysis but SNR is tremendously poor (given the artifact at higher framerates with the spinning disk)
+
+
+THRESHOLDING
+	decided to measure the negative noise and fnd the difference between the minimum and np.median (np.median is positive - generally; scipy.stats.mode is negative) ZhangFit over-estimates peak heights
+		negative noise x2 creates a dynamic baseline for each corrected trace
+
+ROI detection:
+
+only removing based on fluorescence
+	computing compactness and npix (which can be used for quantifying synapse strength / receptor recruitment? in spontaneous conditions
+
+
+LATENCY:
+
+	now able to output where the fluorescent trace crosses the threshold(currently by establishing a range that is acceptable for a threshold)
+		currently over represents the number of positions (+/- 20%)
+		need to find a way to assign the correct indexes to each peak (e.g. after a peak, choose the next appropriate index that is further in time compared to the peak region)
+
+
+SORTING ACTIVITY BY 'K-MEANS'

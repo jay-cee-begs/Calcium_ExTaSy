@@ -1,0 +1,40 @@
+suite2p-main 0.13.0
+
+correct / scalable ROI detection parameters (less synapses w/ lower frame rates as suspected
+
+40fps 
+20
+10
+5
+2.5
+
+well003_r002
+
+533/795
+510/650
+445/501
+397/415
+335/342
+
+well003_r003
+632/1022
+612/964
+594/887
+555/814
+515/710
+
+suite2p-revert
+
+
+well003_r003
+569/782
+498/629
+341/385
+653/880
+700/936
+
+
+this appears to be a problem in older versions that was patched later on....at what point, I am not sure
+
+
+
